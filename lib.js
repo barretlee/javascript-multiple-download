@@ -4,7 +4,12 @@
  * @email  barret.china@gmail.com
  */
 var Downer = (function(files){
-	var h5Down = document.createElement("a").hasOwnProperty("download");
+	var h5Down;
+	try{
+		h5Down = document.createElement("a").hasOwnProperty("download");
+	} catch(e){
+		h5Down = document.createElement("a").download;
+	}
 
 	/**
 	 * 在支持 download 属性的情况下使用该方法进行单个文件下载
@@ -37,7 +42,7 @@ var Downer = (function(files){
 	 * @param  {String} fileName
 	 * @param  {String|FileObject} contentOrPath
 	 */
-	function IEdownloadFile(fileName, contentOrPath){
+	function IEdownloadFile(fileName, contentOrPath, bool){
 		var isImg = contentOrPath.slice(0, 10) === "data:image",
 			ifr = document.createElement('iframe');
 
@@ -51,11 +56,16 @@ var Downer = (function(files){
 				contentOrPath + "' />");
 
 		// 保存页面 -> 保存文件
-		//alert(ifr.contentWindow.document.body.innerHTML)
-		setTimeout(function(){
+		// alert(ifr.contentWindow.document.body.innerHTML)
+		if(bool){
 			ifr.contentWindow.document.execCommand('SaveAs', false, fileName);
 			document.body.removeChild(ifr);
-		}, 0);
+		} else {
+			setTimeout(function(){
+				ifr.contentWindow.document.execCommand('SaveAs', false, fileName);
+				document.body.removeChild(ifr);
+			}, 0);
+		}
 	}
 
 	/**
@@ -74,7 +84,8 @@ var Downer = (function(files){
 		// 判断类型，处理下载文件名
 		if(files instanceof Array) {
 			for(var i = 0, l = files.length; i < l ; i++) 
-				downer(parseURL(files[i]), files[i]);
+				// bug 处理
+				downer(parseURL(files[i]), files[i], true);
 		} else if(typeof files === "string") {
 			downer(parseURL(files), files);
 		} else {
