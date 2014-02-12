@@ -2,6 +2,8 @@
 <html>
 <head>
 	<meta charset="utf-8" />
+	<meta name="author" content="barret lee" />
+	<meta name="email" content="barret.china@gmail.com" />
 	<title>DEMO</title>
 </head>
 
@@ -18,12 +20,12 @@
  * @email  barret.china@gmail.com
  */
 var Downer = (function(files){
-	var h5Down;
-	try{
-		h5Down = document.createElement("a").hasOwnProperty("download");
-	} catch(e){
-		h5Down = document.createElement("a").download;
-	}
+	var h5Down = /Trident|MSIE/.test(navigator.userAgent.indexOf("MSIE"));
+	// try{
+	// 	h5Down = document.createElement("a").hasOwnProperty("download");
+	// } catch(e){
+	// 	h5Down = document.createElement("a").download;
+	// }
 
 	/**
 	 * 在支持 download 属性的情况下使用该方法进行单个文件下载
@@ -104,7 +106,7 @@ var Downer = (function(files){
 			downer(parseURL(files), files);
 		} else {
 			// 对象
-			for(var file in files) downer(file, files[file], true);
+			for(var file in files) downer(file, files[file]);
 		}
 	}
 
@@ -112,17 +114,17 @@ var Downer = (function(files){
 
 
 function down1(){
-	Downer("../file/test.txt");
+	Downer("./file/test.txt");
 }
 
 function down2(){
-	Downer(["../file/test.txt","../file/test.txt"]);
+	Downer(["./file/test.txt","./file/test.txt"]);
 }
 
 function down3(){
 	Downer({
-		"1.txt":"../file/test.txt",
-		"2.jpg":"../file/test.jpg"
+		"1.txt":"./file/test.txt",
+		"2.jpg":"./file/test.jpg"
 	});	
 }
 
