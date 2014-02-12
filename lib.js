@@ -13,6 +13,7 @@ var Downer = (function(files){
 
 	/**
 	 * 在支持 download 属性的情况下使用该方法进行单个文件下载
+	 * 目前 FF 还不支持 download 属性，所以 FF 必须另觅他法！
 	 * @param  {String} fileName
 	 * @param  {String|FileObject} contentOrPath
 	 * @return {Null}
@@ -24,7 +25,8 @@ var Downer = (function(files){
 			isPath = contentOrPath.lastIndexOf(".") > -1;
 
 		// 初始化点击事件
-		evt.initEvent("click");
+		// 注：initEvent 不加后两个参数在FF下会报错
+		evt.initEvent("click",false,false);
 
 		// 添加文件下载名
 		aLink.download = fileName;
