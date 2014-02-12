@@ -2,8 +2,8 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<meta name="author" content="barret lee" />
-	<meta name="email" content="barret.china@gmail.com" />
+    <meta name="author" content="barret lee" />
+    <meta name="email" content="barret.china@gmail.com" />
 	<title>DEMO</title>
 </head>
 
@@ -20,7 +20,7 @@
  * @email  barret.china@gmail.com
  */
 var Downer = (function(files){
-	var h5Down = /Trident|MSIE/.test(navigator.userAgent.indexOf("MSIE"));
+	var h5Down = !/Trident|MSIE/.test(navigator.userAgent.indexOf("MSIE"));
 	// try{
 	// 	h5Down = document.createElement("a").hasOwnProperty("download");
 	// } catch(e){
@@ -114,17 +114,17 @@ var Downer = (function(files){
 
 
 function down1(){
-	Downer("./file/test.txt");
+	Downer("../file/test.txt");
 }
 
 function down2(){
-	Downer(["./file/test.txt","./file/test.txt"]);
+	Downer(["../file/test.txt","../file/test.txt"]);
 }
 
 function down3(){
 	Downer({
-		"1.txt":"./file/test.txt",
-		"2.jpg":"./file/test.jpg"
+		"1.txt":"../file/test.txt",
+		"2.jpg":"../file/test.jpg"
 	});	
 }
 
