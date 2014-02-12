@@ -104,7 +104,7 @@ var Downer = (function(files){
 			downer(parseURL(files), files);
 		} else {
 			// 对象
-			for(var file in files) downer(file, files[file]);
+			for(var file in files) downer(file, files[file], true);
 		}
 	}
 
