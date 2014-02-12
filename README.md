@@ -24,4 +24,4 @@ DEMO：[javascript-multiple-download](http://rawgithub.com/barretlee/javascript-
 		"2.jpg":"./file/test.jpg"
 	});	
 
-文件的 URL 如 "./file/test.txt" 都可以改成 base64 或者其他格式。
+文件的 URL 如 `./file/test.txt` 都可以改成 base64 或者其他格式。
