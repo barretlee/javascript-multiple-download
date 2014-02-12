@@ -4,7 +4,7 @@
  * @email  barret.china@gmail.com
  */
 var Downer = (function(files){
-	var h5Down = !/Trident|MSIE/.test(navigator.userAgent.indexOf("MSIE"));
+	var h5Down = !/Trident|MSIE/.test(navigator.userAgent);
 	// try{
 	// 	h5Down = document.createElement("a").hasOwnProperty("download");
 	// } catch(e){
