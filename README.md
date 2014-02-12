@@ -1,4 +1,4 @@
-javascript-multiple-download
+JavaScript多文件下载
 ============================
 
 ### 代码的封装以及相关 DEMO
