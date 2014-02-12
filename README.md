@@ -1,11 +1,11 @@
 javascript-multiple-download
 ============================
 
-## 代码的封装以及相关 DEMO
+### 代码的封装以及相关 DEMO
 
 DEMO：[javascript-multiple-download](http://rawgithub.com/barretlee/javascript-multiple-download/master/test/test.html)
 
-## 接口的调用
+### 接口的调用
 
 提供了三个接口，支持单文件下载，多文件下载，多文件下载自定义命名。
 
