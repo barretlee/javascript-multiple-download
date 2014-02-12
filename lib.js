@@ -4,12 +4,12 @@
  * @email  barret.china@gmail.com
  */
 var Downer = (function(files){
-	var h5Down;
-	try{
-		h5Down = document.createElement("a").hasOwnProperty("download");
-	} catch(e){
-		h5Down = document.createElement("a").download;
-	}
+	var h5Down = /Trident|MSIE/.test(navigator.userAgent.indexOf("MSIE"));
+	// try{
+	// 	h5Down = document.createElement("a").hasOwnProperty("download");
+	// } catch(e){
+	// 	h5Down = document.createElement("a").download;
+	// }
 
 	/**
 	 * 在支持 download 属性的情况下使用该方法进行单个文件下载
